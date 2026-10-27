@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+/* 
+ * ATURAN VISUAL GLOBAL PPDB:
+ * - Latar halaman: putih (bg-white) atau slate-50; kartu putih (bg-white), border slate-200, rounded-2xl.
+ * - Hindari gradient mencolok dan shadow berat; utamakan clean line & border halus (shadow-2xs / shadow-xs).
+ * - Tombol utama: bg-emerald-700 text-white rounded-xl min-h-[44px] font-bold.
+ * - Tombol sekunder: border slate-300 bg-white text-slate-700 hover:bg-slate-50.
+ * - Tipografi: Plus Jakarta Sans; heading font-extrabold tracking-tight; teks isi slate-600; spasi lapang (p-6, gap-5).
+ * - Warna status hanya untuk teks atau pill kecil: need_revision (amber), submitted (blue), accepted (purple), completed (teal), cancelled (rose).
+ */
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+    /* Warna Brand Tunggal */
+    --color-brand: #047857;
+    --color-brand-hover: #065f46;
+    --color-brand-light: #ecfdf5;
+    --color-brand-border: #a7f3d0;
+
+    /* Warna Status Subtle (Pill & Text) */
+    --color-status-submitted: #2563eb;
+    --color-status-submitted-bg: #eff6ff;
+    --color-status-submitted-border: #bfdbfe;
+
+    --color-status-revision: #d97706;
+    --color-status-revision-bg: #fffbeb;
+    --color-status-revision-border: #fde68a;
+
+    --color-status-verified: #047857;
+    --color-status-verified-bg: #ecfdf5;
+    --color-status-verified-border: #a7f3d0;
+
+    --color-status-accepted: #7e22ce;
+    --color-status-accepted-bg: #faf5ff;
+    --color-status-accepted-border: #e9d5ff;
+
+    --color-status-completed: #0f766e;
+    --color-status-completed-bg: #f0fdfa;
+    --color-status-completed-border: #99f6e4;
+
+    --color-status-cancelled: #e11d48;
+    --color-status-cancelled-bg: #fff1f2;
+    --color-status-cancelled-border: #fecdd3;
+}
+
+/* Komponen Utilitas Global PPDB */
+@layer components {
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-xs transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:opacity-50 disabled:pointer-events-none;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs sm:text-sm shadow-2xs transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400 disabled:opacity-50 disabled:pointer-events-none;
+    }
+
+    .card {
+        @apply bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs;
+    }
+
+    .pill {
+        @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border;
+    }
+
+    .pill-submitted {
+        @apply bg-blue-50 text-blue-700 border-blue-200;
+    }
+
+    .pill-need-revision {
+        @apply bg-amber-50 text-amber-800 border-amber-200;
+    }
+
+    .pill-verified {
+        @apply bg-emerald-50 text-emerald-800 border-emerald-200;
+    }
+
+    .pill-accepted {
+        @apply bg-purple-50 text-purple-700 border-purple-200;
+    }
+
+    .pill-completed {
+        @apply bg-teal-50 text-teal-800 border-teal-200;
+    }
+
+    .pill-cancelled {
+        @apply bg-rose-50 text-rose-700 border-rose-200;
+    }
+}

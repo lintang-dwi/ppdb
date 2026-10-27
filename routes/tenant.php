@@ -28,11 +28,15 @@ use Illuminate\Support\Facades\Route;
 // Public Landing Page
 Route::get('/', function (TenantContextService $tenant) {
     if (! $tenant->hasTenant()) {
-        return response()->json([
-            'engine' => 'PPDB Multi-Tenant Monolith',
-            'status' => 'operational',
-            'timestamp' => now()->toIso8601String(),
-        ]);
+        if (request()->wantsJson()) {
+            return response()->json([
+                'engine' => 'PPDB Multi-Tenant Monolith',
+                'status' => 'operational',
+                'timestamp' => now()->toIso8601String(),
+            ]);
+        }
+
+        return view('pages.public.central_landing');
     }
 
     return app(LandingController::class)();

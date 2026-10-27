@@ -26,6 +26,10 @@ Route::prefix('superadmin')->as('superadmin.')->group(function () {
     });
 });
 
+// Public Legal & Information Pages
+Route::view('/privacy-policy', 'pages.public.privacy_policy')->name('privacy');
+Route::view('/terms', 'pages.public.terms')->name('terms');
+
 // Mode 1: Sub-path Prefix (e.g., ppdb.bitserver.cloud/{school_code}/*)
 Route::prefix('{school_code}')
     ->middleware([IdentifyTenantPpdb::class])

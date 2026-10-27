@@ -59,9 +59,19 @@ class TenancyFoundationTest extends TestCase
         ]);
     }
 
-    public function test_central_platform_root_returns_operational_status(): void
+    public function test_central_platform_root_renders_landing_page(): void
     {
         $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('PPDB Multi-Tenant');
+        $response->assertSee('Kebijakan Privasi');
+        $response->assertSee('Syarat & Ketentuan');
+    }
+
+    public function test_central_platform_root_returns_operational_json_when_requested(): void
+    {
+        $response = $this->getJson('/');
 
         $response->assertStatus(200);
         $response->assertJson([
